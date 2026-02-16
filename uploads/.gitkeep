@@ -1,0 +1,2 @@
+# This file ensures the uploads/products directory is created
+# when cloning the repository. Keep this file in version control.
