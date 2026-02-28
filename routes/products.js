@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
         const { page = 1, limit = 20, category, sortBy = 'newest' } = req.query;
         const skip = (page - 1) * limit;
 
-        let query = { isActive: true };
+        // Treat documents without `isActive` field as active (backwards compatibility)
+        let query = { $or: [ { isActive: { $exists: false } }, { isActive: true } ] };
         if (category) query.category = category;
 
         let sortOption = { createdAt: -1 };

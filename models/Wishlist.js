@@ -31,6 +31,6 @@ const wishlistSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Index for quick lookups
-wishlistSchema.index({ userId: 1 });
+// `userId` is declared `unique: true` above; avoid declaring the same index twice.
 
 module.exports = mongoose.model('Wishlist', wishlistSchema);

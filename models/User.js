@@ -55,7 +55,8 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Index for quick lookups
-userSchema.index({ email: 1 });
+// `email` is declared `unique: true` in the schema above, which creates an index.
+// Avoid duplicate index declarations to prevent Mongoose warnings.
 userSchema.index({ role: 1 });
 userSchema.index({ createdAt: -1 });
 
